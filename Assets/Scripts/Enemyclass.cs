@@ -7,13 +7,12 @@ public class Enemyclass : CharacterHPMechanics
     public GameObject m_Target;
     public float m_Health = 100.0f;
     public float m_Damage = 0f;
+    public float m_minRange;
     
 
 
     protected NavMeshAgent m_NavMeshAgent;
-    protected float m_distenceCow;
-    protected float m_distencePlayer;
-    
+    private bool isTargetCow = false;
 
     void Start()
     {
@@ -33,18 +32,27 @@ public class Enemyclass : CharacterHPMechanics
 
     virtual protected void ProcessMove()
     {
-        m_distenceCow = Vector3.Distance(m_Cow.transform.position, transform.position);
-        if (m_distenceCow < 20)
+        float distencePlayer = Vector3.Distance(m_Target.transform.position, transform.position);
+        float distenceCow = Vector3.Distance(m_Cow.transform.position, transform.position);
+        if (distenceCow < 20 && distenceCow > 10)
         {
+            isTargetCow = true;
+            Debug.Log("kein STOPPPP");
             m_NavMeshAgent.SetDestination(m_Cow.transform.position);
+
+        }
+        else if(distencePlayer > 10 && !isTargetCow)
+        {
+                m_NavMeshAgent.SetDestination(m_Target.transform.position);  
+                Debug.Log("Bin ich Hier");
         }
         else
         {
-            m_NavMeshAgent.SetDestination(m_Target.transform.position);
+            m_NavMeshAgent.Stop();
+            Debug.Log("STOPPPPPPPPPPPP");
         }
 
-        // Ab Hier testen :P
-        m_distencePlayer = Vector3.Distance(m_Target.transform.position, transform.position);
+        /* Ab Hier testen :P
         if (tag == "Melee")
         {
             if (m_distenceCow < 2 || m_distencePlayer < 2)
@@ -65,7 +73,7 @@ public class Enemyclass : CharacterHPMechanics
                 m_NavMeshAgent.Stop();
                 ProcessAttack();
             }
-        }
+        }*/
 
 
     }

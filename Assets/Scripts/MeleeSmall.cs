@@ -5,14 +5,10 @@ public class MeleeSmall : Enemyclass
 {
     
 	// Use this for initialization
-	void Start () 
-    {
-	    
-	}
 
     protected override void ProcessMove()
     {
-        
+        m_minRange = 10f;   
         base.ProcessMove();
         
 

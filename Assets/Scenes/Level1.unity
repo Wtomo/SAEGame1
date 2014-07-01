@@ -20458,7 +20458,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1713754304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 205.831039, y: 120.880936, z: 157.009583}
+  m_LocalPosition: {x: 176.712463, y: 120.880936, z: 165.771408}
   m_LocalScale: {x: 1, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -24360,12 +24360,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2075267054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d5108899bc1fee4dbb87388d9a7f466, type: 3}
+  m_Script: {fileID: 11500000, guid: d93e86deb53adfc448e97fc8016ca460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_MaxHP: 0
+  m_RegHP: 0
+  m_Armor: 0
+  m_IsAlive: 1
   m_Cow: {fileID: 1713754304}
   m_Target: {fileID: 218328725}
   m_Health: 100
+  m_Damage: 0
+  m_minRange: 0
 --- !u!195 &2075267056
 NavMeshAgent:
   m_ObjectHideFlags: 0
