@@ -1,23 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemyclass : MonoBehaviour
+public class Enemyclass : CharacterHPMechanics
 {
     public GameObject m_Cow;
     public GameObject m_Target;
     public float m_Health = 100.0f;
     public float m_Damage = 0f;
-
+    
 
 
     protected NavMeshAgent m_NavMeshAgent;
     protected float m_distenceCow;
     protected float m_distencePlayer;
-
+    
 
     void Start()
     {
-
+        
     }
 
     protected virtual void Awake()
@@ -28,6 +28,7 @@ public class Enemyclass : MonoBehaviour
     {
         ProcessMove();
         ProcessAttack();
+        
     }
 
     virtual protected void ProcessMove()
