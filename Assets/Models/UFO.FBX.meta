@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ea50a654539db424d9b3aef6ea8bad7a
+guid: ba402e7debeb454479aae2fa4a228a27
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -10,13 +10,14 @@ ModelImporter:
     4300000: Ufo
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
+    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
