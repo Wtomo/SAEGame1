@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemyclass : CharacterHPMechanics
+public class Enemyclass : CharacterMechanics
 {
     public GameObject m_Cow;
     public GameObject m_Target;

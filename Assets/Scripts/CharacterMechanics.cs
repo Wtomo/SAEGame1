@@ -14,9 +14,9 @@ public class CharacterMechanics : MonoBehaviour
     private float timer = 0f; //Timer für HP5
 
     //Upgrade Levels für Horst
-    public int m_HutLevel = 1;
-    public int m_StiefelLevel = 1;
-    public int m_WesteLevel = 1;
+    public int m_HutLevel = 0;
+    public int m_StiefelLevel = 0;
+    public int m_WesteLevel = 0;
 
     //Take Damage Funktion
     public void TakeDamage(int damage)
