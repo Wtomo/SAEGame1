@@ -10,6 +10,9 @@ public class CharacterMechanics : MonoBehaviour
     public float m_RegHP; //HP5, s.h.: Menge an HP die alle 5 Sekunden generiert wird
     public float m_Armor; //Rüstung die die Einheit besitzt, wird direkt von dem eingehenden Schaden abgezogen (Keine Rüstungsdurchdringung)
     public bool m_IsAlive = true; //Gibt an ob die Einheit lebt oder nicht
+
+
+    protected bool Attack = false;
     private float timer = 0f; //Timer für HP5
 
     //Take Damage Funktion
@@ -24,7 +27,6 @@ public class CharacterMechanics : MonoBehaviour
         }
         return;
     }
-
     // Use this for initialization
     void Start()
     {

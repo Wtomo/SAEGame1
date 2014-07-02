@@ -6,8 +6,9 @@ abstract public class Enemyclass : CharacterMechanics
     public GameObject m_Cow;
     public GameObject m_Target;
     public float m_minRange;
-    public float m_Attackspeed = 2;
-
+    public float m_AttackSpeed = 2;
+    public string CowTag = "Cow";
+    public string PlayerTag = "Player";
 
     protected NavMeshAgent m_NavMeshAgent;
     protected float m_maxTimer = 2f;
@@ -64,10 +65,35 @@ abstract public class Enemyclass : CharacterMechanics
         }
 
     }
-
-
-
     abstract protected void ProcessAttack();
+
+    // SendDamage
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Hallo bin da");
+       if (Attack)
+        {
+            if (other.gameObject.tag == PlayerTag || other.gameObject.tag == CowTag)
+            {
+                other.gameObject.SendMessage("TakeDamage", m_Damage, SendMessageOptions.DontRequireReceiver);
+            }
+        }
+    }
+    void OnTriggerStay(Collider other)
+    {
+        if (Attack)
+        {
+            Debug.Log("Ich stehe in dir");
+            if (other.gameObject.tag == PlayerTag || other.gameObject.tag == CowTag)
+            {
+                other.gameObject.SendMessage("TakeDamage", m_Damage, SendMessageOptions.DontRequireReceiver);
+            }
+        }
+    }
+
+
+
+
      
    
     

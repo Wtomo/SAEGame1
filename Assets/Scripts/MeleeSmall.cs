@@ -8,22 +8,23 @@ public class MeleeSmall : Enemyclass
 
     protected override void ProcessMove()
     {
-        m_minRange = 3f;   
+        m_minRange = 4f;   
         base.ProcessMove();
         
 
     }
-
+    
     protected override void ProcessAttack()
     {
-        if (m_Attackspeed >= 0)
-        {
-            m_Attackspeed -= Time.deltaTime;            
-        }
-        else if (m_Attackspeed <= 0)
-        {
-            // damage
-        }
-        
+               
+            if (m_AttackSpeed >= 0)
+            {               
+                m_AttackSpeed -= Time.deltaTime;
+            }
+            else if (m_AttackSpeed <= 0)
+            {
+                //damage
+            }       
     }
+
 }
