@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemyclass : CharacterHPMechanics
+abstract public class Enemyclass : CharacterMechanics
 {
     public GameObject m_Cow;
     public GameObject m_Target;
-    public float m_Health = 100.0f;
-    public float m_Damage = 0f;
     public float m_minRange;
-    
+    public float m_Attackspeed = 2;
 
 
     protected NavMeshAgent m_NavMeshAgent;
-    private bool isTargetCow = false;
+    protected float m_maxTimer = 2f;
 
+    private bool isTargetCow = false;
+    private float m_MaxRangeCow = 20f;
+    
     void Start()
     {
         
@@ -26,59 +27,48 @@ public class Enemyclass : CharacterHPMechanics
     void Update()
     {
         ProcessMove();
-        ProcessAttack();
         
     }
 
     virtual protected void ProcessMove()
     {
+
         float distencePlayer = Vector3.Distance(m_Target.transform.position, transform.position);
         float distenceCow = Vector3.Distance(m_Cow.transform.position, transform.position);
-        if (distenceCow < 20 && distenceCow > 10)
+        if (distenceCow < m_MaxRangeCow && distenceCow > m_minRange)
         {
+            m_NavMeshAgent.speed = 10f;
             isTargetCow = true;
-            Debug.Log("kein STOPPPP");
-            m_NavMeshAgent.SetDestination(m_Cow.transform.position);
+            transform.forward = m_Cow.transform.position - transform.position;// Auslagern in Externe Funktion (mit Parameter übergeben
+            m_NavMeshAgent.SetDestination(m_Cow.transform.position); // Auslagern in Externe Funktion (mit Parameter übergeben
+            ProcessAttack();
+            
 
         }
-        else if(distencePlayer > 10 && !isTargetCow)
+        else if(distencePlayer > m_minRange && !isTargetCow)
         {
-                m_NavMeshAgent.SetDestination(m_Target.transform.position);  
-                Debug.Log("Bin ich Hier");
+            m_NavMeshAgent.speed = 10f;
+            transform.forward = m_Target.transform.position - transform.position; // Auslagern in Externe Funktion (mit Parameter übergeben
+            m_NavMeshAgent.SetDestination(m_Target.transform.position);// Auslagern in Externe Funktion (mit Parameter übergeben
+            ProcessAttack();
         }
         else
         {
-            m_NavMeshAgent.Stop();
-            Debug.Log("STOPPPPPPPPPPPP");
+            if (!isTargetCow)
+            {
+                transform.forward = m_Target.transform.position - transform.position; // Auslagern in Externe Funktion (mit Parameter übergeben
+            }
+           // m_NavMeshAgent.Stop();
+            ProcessAttack();
+            m_NavMeshAgent.speed = 0;
         }
 
-        /* Ab Hier testen :P
-        if (tag == "Melee")
-        {
-            if (m_distenceCow < 2 || m_distencePlayer < 2)
-            {
-
-                Debug.Log("Hey");
-                m_NavMeshAgent.Stop();
-                ProcessAttack();
-
-            }
-
-        }
-        if (tag == "Fern")
-        {
-            if (m_distenceCow < 7 || m_distencePlayer < 7)
-            {
-                Debug.Log("Funktioniert es?");
-                m_NavMeshAgent.Stop();
-                ProcessAttack();
-            }
-        }*/
-
-
     }
-    virtual protected void ProcessAttack() // Soll abstract sein
-    {
 
-    }
+
+
+    abstract protected void ProcessAttack();
+     
+   
+    
 }
