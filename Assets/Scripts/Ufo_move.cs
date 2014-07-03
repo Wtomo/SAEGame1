@@ -18,7 +18,7 @@ public class Ufo_move : MonoBehaviour {
 	}
     void Move()
     {
-        Debug.Log("Ziel " + i);
+        //Debug.Log("Ziel " + i);
         Vector3 dis = _waypoints[i].position - transform.position;
         Vector3 dir = dis.normalized * Time.deltaTime * _speed;
         if (dir.sqrMagnitude > dis.sqrMagnitude)

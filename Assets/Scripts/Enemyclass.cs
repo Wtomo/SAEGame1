@@ -16,17 +16,15 @@ abstract public class Enemyclass : CharacterMechanics
     private bool isTargetCow = false;
     private float m_MaxRangeCow = 20f;
     
-    void Start()
-    {
-        
-    }
+
 
     protected virtual void Awake()
     {
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
     }
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         ProcessMove();
         
     }
@@ -68,7 +66,7 @@ abstract public class Enemyclass : CharacterMechanics
     abstract protected void ProcessAttack();
 
     // SendDamage
-    void OnTriggerEnter(Collider other)
+   /* void OnTriggerEnter(Collider other)
     {
         Debug.Log("Hallo bin da");
        if (Attack)
@@ -89,7 +87,7 @@ abstract public class Enemyclass : CharacterMechanics
                 other.gameObject.SendMessage("TakeDamage", m_Damage, SendMessageOptions.DontRequireReceiver);
             }
         }
-    }
+    }*/
 
 
 

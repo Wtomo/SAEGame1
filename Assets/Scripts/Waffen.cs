@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-abstract public class Waffen : MonoBehaviour
+public class Waffen : MonoBehaviour
 {
 
     

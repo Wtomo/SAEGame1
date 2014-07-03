@@ -41,8 +41,9 @@ public class CharacterMotor : CharacterMechanics {
         }
         if (weaponType != WeaponType.None)
         {
-            m_Weapon = (Waffen)Instantiate(m_availableWeapons[weaponType], m_HandPosition.position, m_HandPosition.rotation);
+            m_Weapon = ((GameObject)Instantiate(m_availableWeapons[weaponType], m_HandPosition.position, m_HandPosition.rotation)).GetComponent<Waffen>();
             m_Weapon.transform.parent = m_HandPosition;
+            Debug.Log(m_Weapon);
         }
     }
 
@@ -50,7 +51,6 @@ public class CharacterMotor : CharacterMechanics {
 	protected override void Start () {
         base.Start();
         m_characterController = GetComponent<CharacterController>();
-        Screen.showCursor = false;
         m_availableWeapons = new Dictionary<WeaponType, GameObject>() { 
             {WeaponType.DesertEagle, m_DesertEaglePrefab},
             {WeaponType.Shotgun, m_ShotgunPrefab},
@@ -58,6 +58,7 @@ public class CharacterMotor : CharacterMechanics {
             {WeaponType.LMG, m_LMGPrefab}
         };
         m_SelectedWeapon = WeaponType.None;
+        giveWeapon(WeaponType.DesertEagle);
 	}
 	
 	// Update is called once per frame
@@ -107,7 +108,7 @@ public class CharacterMotor : CharacterMechanics {
             Vector3 hitPos = m_CurrentAimResult.Value.point;
             hitPos.y = transform.position.y;
             transform.forward = hitPos - transform.position;
-            m_Crosshair.transform.position = hitPos + Vector3.up;
+            //m_Crosshair.transform.position = hitPos + Vector3.up;
         }        
 	}
 }

@@ -5,11 +5,11 @@ public class CharacterMechanics : MonoBehaviour
 {
     public float m_BaseSpeed;
     public float m_Speed;
-    public float m_Damage;
     public float m_MaxHP; //Maximale HP der Einheit
     public float m_HP; //Aktuelle HP der Einheit
     public float m_RegHP; //HP5, s.h.: Menge an HP die alle 5 Sekunden generiert wird
     public float m_Armor; //Rüstung die die Einheit besitzt, wird direkt von dem eingehenden Schaden abgezogen (Keine Rüstungsdurchdringung)
+    public int m_Damage;
     public bool m_IsAlive = true; //Gibt an ob die Einheit lebt oder nicht
 
     //Upgrade Levels für Horst
@@ -102,8 +102,11 @@ public class CharacterMechanics : MonoBehaviour
         m_HP -= trueDamage;
         if (m_HP <= 0f) //Abfrage ob HP auf 0 gesunken sind
         {
+            Debug.Log(m_HP);
             m_HP = 0f;
             m_IsAlive = false;
+            E_spawner._EnemyCounter--;
+            Destroy(gameObject);
         }
         return;
     }
