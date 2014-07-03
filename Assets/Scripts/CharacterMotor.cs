@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class CharacterMotor : CharacterMechanics {
 
     private CharacterController m_characterController;
-    public float m_MovementSpeed = 5.0f;
     public float m_Gravity = 9.81f;
 
     public Transform m_HandPosition;
@@ -86,7 +85,7 @@ public class CharacterMotor : CharacterMechanics {
         //Add the gravity to the movement
         movement.y = -m_Gravity;
 
-        m_characterController.Move(movement * Time.deltaTime * m_MovementSpeed);
+        m_characterController.Move(movement * Time.deltaTime * m_Speed);
         
         //calculate the camera target position based on the mouse offset to the screen center
         Vector3 mousePosition = Input.mousePosition;
