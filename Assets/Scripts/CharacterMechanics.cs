@@ -4,10 +4,10 @@ using System.Collections;
 public class CharacterMechanics : MonoBehaviour
 {
     public float m_BaseSpeed;
-    private float m_Speed;
+    public float m_Speed;
     public float m_Damage;
     public float m_MaxHP; //Maximale HP der Einheit
-    private float m_HP; //Aktuelle HP der Einheit
+    public float m_HP; //Aktuelle HP der Einheit
     public float m_RegHP; //HP5, s.h.: Menge an HP die alle 5 Sekunden generiert wird
     public float m_Armor; //Rüstung die die Einheit besitzt, wird direkt von dem eingehenden Schaden abgezogen (Keine Rüstungsdurchdringung)
     public bool m_IsAlive = true; //Gibt an ob die Einheit lebt oder nicht
