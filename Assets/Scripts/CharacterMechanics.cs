@@ -109,14 +109,14 @@ public class CharacterMechanics : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start()
+    protected virtual void Start()
     {
         //Setzt die aktuellen HP auf die Maximal-HP der Einheit hoch, wird nur beim Start aufgerufen
         m_HP = m_MaxHP;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         //Regelt die HP-Regeneration
         timer += Time.deltaTime;

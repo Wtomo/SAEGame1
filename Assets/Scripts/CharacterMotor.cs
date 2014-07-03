@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class CharacterMotor : MonoBehaviour {
+public class CharacterMotor : CharacterMechanics {
 
     private CharacterController m_characterController;
     public float m_MovementSpeed = 5.0f;
@@ -47,7 +47,8 @@ public class CharacterMotor : MonoBehaviour {
     }
 
 	// Use this for initialization
-	void Start () {
+	protected override void Start () {
+        base.Start();
         m_characterController = GetComponent<CharacterController>();
         Screen.showCursor = false;
         m_availableWeapons = new Dictionary<WeaponType, GameObject>() { 
@@ -60,7 +61,8 @@ public class CharacterMotor : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected override void Update () {
+        base.Update();
         //Handle weapon inputs if a weapon is assigned
         if (m_Weapon != null)
         {
