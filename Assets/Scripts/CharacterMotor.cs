@@ -17,10 +17,17 @@ public class CharacterMotor : MonoBehaviour {
     public RaycastHit? m_CurrentAimResult {get; private set;}
 
     public GameObject m_DesertEaglePrefab;
+    public GameObject m_ShotgunPrefab;
+    public GameObject m_AssaultRiflePrefab;
+    public GameObject m_LMGPrefab;
+
     public enum WeaponType
     {
         None,
-        Deagle
+        DesertEagle,
+        Shotgun,
+        AssaultRifle,
+        LMG
     }
 
     private Dictionary<WeaponType, GameObject> m_availableWeapons;
@@ -44,7 +51,10 @@ public class CharacterMotor : MonoBehaviour {
         m_characterController = GetComponent<CharacterController>();
         Screen.showCursor = false;
         m_availableWeapons = new Dictionary<WeaponType, GameObject>() { 
-            {WeaponType.Deagle, m_DesertEaglePrefab}
+            {WeaponType.DesertEagle, m_DesertEaglePrefab},
+            {WeaponType.Shotgun, m_ShotgunPrefab},
+            {WeaponType.AssaultRifle, m_AssaultRiflePrefab},
+            {WeaponType.LMG, m_LMGPrefab}
         };
         m_SelectedWeapon = WeaponType.None;
 	}
