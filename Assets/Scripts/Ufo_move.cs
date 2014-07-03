@@ -4,7 +4,7 @@ using System.Collections;
 public class Ufo_move : MonoBehaviour {
 
     public Transform[] _waypoints;
-    private float _speed = 25f;
+    public float _speed = 25f;
     private int i = 0;
 	// Use this for initialization
 	void Start () {
@@ -18,6 +18,7 @@ public class Ufo_move : MonoBehaviour {
 	}
     void Move()
     {
+        Debug.Log("Ziel " + i);
         Vector3 dis = _waypoints[i].position - transform.position;
         Vector3 dir = dis.normalized * Time.deltaTime * _speed;
         if (dir.sqrMagnitude > dis.sqrMagnitude)
@@ -25,6 +26,6 @@ public class Ufo_move : MonoBehaviour {
             transform.position = _waypoints[i].position;
             i = (i + 1) % _waypoints.Length;
         }
-        transform.Translate(dir);
+        transform.Translate(dir, Space.World);
     }
 }
