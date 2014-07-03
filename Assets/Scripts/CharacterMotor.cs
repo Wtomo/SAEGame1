@@ -1,21 +1,52 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CharacterMotor : MonoBehaviour {
 
     private CharacterController m_characterController;
     public float m_MovementSpeed = 5.0f;
     public float m_Gravity = 9.81f;
-    public Waffen m_Weapon;
+
+    public Transform m_HandPosition;
+    public WeaponType m_SelectedWeapon{get; private set;}
+    private Waffen m_Weapon;
     public Camera m_CharacterCamera;
     public GameObject m_Crosshair;
     //Contains the RaycastHit info from the cursor to the world every frame
     public RaycastHit? m_CurrentAimResult {get; private set;}
 
+    public GameObject m_DesertEaglePrefab;
+    public enum WeaponType
+    {
+        None,
+        Deagle
+    }
+
+    private Dictionary<WeaponType, GameObject> m_availableWeapons;
+
+    public void giveWeapon(WeaponType weaponType)
+    {
+        if(m_SelectedWeapon != WeaponType.None)
+        {
+            Destroy(m_Weapon.gameObject);
+            m_SelectedWeapon = weaponType;
+        }
+        if (weaponType != WeaponType.None)
+        {
+            m_Weapon = (Waffen)Instantiate(m_availableWeapons[weaponType], m_HandPosition.position, m_HandPosition.rotation);
+            m_Weapon.transform.parent = m_HandPosition;
+        }
+    }
+
 	// Use this for initialization
 	void Start () {
         m_characterController = GetComponent<CharacterController>();
         Screen.showCursor = false;
+        m_availableWeapons = new Dictionary<WeaponType, GameObject>() { 
+            {WeaponType.Deagle, m_DesertEaglePrefab}
+        };
+        m_SelectedWeapon = WeaponType.None;
 	}
 	
 	// Update is called once per frame
