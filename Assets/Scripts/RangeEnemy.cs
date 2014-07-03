@@ -19,20 +19,21 @@ public class RangeEnemy : Enemyclass
 
     protected override void ProcessAttack()
     {
-        //float Target
-
-        if (m_Attackspeed >= 0)
+        //float Target      
+        if (m_AttackSpeed >= 0)
         {
-            m_Attackspeed -= Time.deltaTime;            
+            
+            m_AttackSpeed -= Time.deltaTime;            
         }
-        else if (m_Attackspeed <= 0)
+        else if (m_AttackSpeed <= 0)
         {
             GameObject bullet = (GameObject)Instantiate(m_BulletPrefab, m_CannonPoint.position, transform.rotation);
             bullet.rigidbody.AddForce(transform.forward * m_BulletSpeed);
-            m_Attackspeed = m_maxTimer;
+            m_AttackSpeed = m_maxTimer;
             
         }
         
     }
+    
 
 }
