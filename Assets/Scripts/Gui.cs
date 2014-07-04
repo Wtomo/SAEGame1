@@ -55,12 +55,8 @@ public class Gui : MonoBehaviour
 
     public void StartGame()
     {
-        Application.LoadLevelAdditive(1);
+        //Application.LoadLevelAdditive(1);
         m_gameManager.GameStates = EGameState.INGAME;
-        //IngameUI.SetActive(true);
-        //StartMenu.SetActive(false);
-      //  GameManager.m_Instance.GameStates = EGameState.INGAME;
-
     }
 
     public void Pause()
@@ -89,6 +85,7 @@ public class Gui : MonoBehaviour
     {
         isPaused = !isPaused;
         m_gameManager.GameStates = EGameState.INGAME;
+
         //Time.timeScale = isPaused ? 0 : 1;
         // IngameUI.SetActive(true);
         // PauseMenu.SetActive(false);
