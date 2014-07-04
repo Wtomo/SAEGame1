@@ -4,7 +4,6 @@ using System.Collections;
 public class Waffen : MonoBehaviour
 {   
 	public int m_maxMagSize = 20;
-	public int m_maxAmmoCapacity = 80;
 
     public int m_bulletDamage = 5;
 	public float m_reloadTime = 3f;
@@ -31,7 +30,7 @@ public class Waffen : MonoBehaviour
 	protected void Start()
 	{
 		m_currentMag = m_maxMagSize;
-		m_currentAmmo = m_maxAmmoCapacity - m_maxMagSize;
+		m_currentAmmo = m_maxMagSize;
 	}
 	
 	// Update is called once per frame
@@ -89,25 +88,11 @@ public class Waffen : MonoBehaviour
 		{
 			m_reload = true;
 			m_reloadTimeCounter += Time.deltaTime;
-
-			return;
 		}
 		else
 		{
 			m_reloadTimeCounter = 0f;
-
-			neededAmmo = m_maxMagSize - m_currentMag;
-
-			if(m_currentAmmo >= neededAmmo)
-			{
-				m_currentMag += neededAmmo;
-				m_currentAmmo -= neededAmmo;
-			}
-			else if (m_currentAmmo < neededAmmo)
-			{
-				m_currentMag += m_currentAmmo;
-				m_currentAmmo = 0;
-			}
+            m_currentMag = m_maxMagSize;
 
 			m_reload = false;
 		}

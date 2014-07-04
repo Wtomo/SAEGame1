@@ -37,9 +37,9 @@ public class Bullet : MonoBehaviour
             { Destroy(gameObject); }
             else if(m_bulletTarget == BulletTarget.Player && hit.transform.tag == "Player"
             || m_bulletTarget == BulletTarget.Enemy && hit.transform.tag == "Enemy")
-            {
-                Debug.Log(hit.transform.tag + " bekommt schaden");
+            {                
                 CharacterMechanics target = hit.transform.GetComponent<CharacterMechanics>();
+                Debug.Log(hit.transform.tag + " bekommt schaden (noch " + target.m_HP + " HP)");
                 target.TakeDamage(m_damage);                
                 Destroy(gameObject);
             }            

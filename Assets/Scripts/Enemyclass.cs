@@ -3,7 +3,7 @@ using System.Collections;
 
 abstract public class Enemyclass : CharacterMechanics
 {
-    public GameObject m_Cow;
+    //public GameObject m_Cow;
     public GameObject m_Target;
     public float m_minRange;
     public float m_AttackSpeed = 2;
@@ -21,6 +21,7 @@ abstract public class Enemyclass : CharacterMechanics
     protected virtual void Awake()
     {
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
+        m_Target = FindObjectOfType<CharacterMotor>().gameObject;
     }
     protected override void Update()
     {
@@ -34,8 +35,8 @@ abstract public class Enemyclass : CharacterMechanics
     {
 
         float distencePlayer = Vector3.Distance(m_Target.transform.position, transform.position);
-        float distenceCow = Vector3.Distance(m_Cow.transform.position, transform.position);
-        if (distenceCow < m_MaxRangeCow && distenceCow > m_minRange)
+        //float distenceCow = Vector3.Distance(m_Cow.transform.position, transform.position);
+        /*if (distenceCow < m_MaxRangeCow && distenceCow > m_minRange)
         {
             m_NavMeshAgent.speed = 10f;
             isTargetCow = true;
@@ -47,7 +48,7 @@ abstract public class Enemyclass : CharacterMechanics
             
 
         }
-        else if(distencePlayer > m_minRange && !isTargetCow)
+        else*/ if(distencePlayer > m_minRange && !isTargetCow)
         {
             m_NavMeshAgent.speed = 10f;
             Vector3 aimDirection = m_Target.transform.position - transform.position;

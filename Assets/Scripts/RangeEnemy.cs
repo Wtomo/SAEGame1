@@ -10,18 +10,11 @@ public class RangeEnemy : Enemyclass
     protected override void Awake()
     {
         base.Awake();
-        m_MaxHP = 75f;
-        m_Damage = 5;
-        m_Armor = 0f;
-        m_AttackSpeed = 2f;
     }
 
     protected override void ProcessMove()
     {
-        m_minRange = 20f;
         base.ProcessMove();
-
-
     }
 
     protected override void ProcessAttack()

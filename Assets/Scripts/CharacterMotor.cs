@@ -11,7 +11,7 @@ public class CharacterMotor : CharacterMechanics {
     public WeaponType m_SelectedWeapon{get; private set;}
     private Waffen m_Weapon;
     public Camera m_CharacterCamera;
-    public GameObject m_Crosshair;
+    public Texture m_Crosshair;
     //Contains the RaycastHit info from the cursor to the world every frame
     public RaycastHit? m_CurrentAimResult {get; private set;}
 
@@ -62,6 +62,7 @@ public class CharacterMotor : CharacterMechanics {
         m_SelectedWeapon = WeaponType.None;
         giveWeapon(WeaponType.DesertEagle);
         m_CharacterCamera.transform.forward = -m_CamOffset;
+        Screen.showCursor = false;
 	}
 	
 	// Update is called once per frame
@@ -107,7 +108,17 @@ public class CharacterMotor : CharacterMechanics {
             Vector3 hitPos = m_CurrentAimResult.Value.point;
             hitPos.y = transform.position.y;
             transform.forward = hitPos - transform.position;
-            //m_Crosshair.transform.position = hitPos + Vector3.up;
         }        
 	}
+
+    void OnGUI()
+    {
+        if (m_CurrentAimResult.HasValue)
+        {
+            Vector3 hitPoint = m_CurrentAimResult.Value.point;
+            hitPoint.y = transform.position.y;
+            Vector3 viewportAim = m_CharacterCamera.WorldToScreenPoint(hitPoint + Vector3.up);
+            GUI.DrawTexture(new Rect(viewportAim.x - 50f, Screen.height - viewportAim.y - 50f, 100f, 100f), m_Crosshair, ScaleMode.ScaleToFit, true);
+        }
+    }
 }
