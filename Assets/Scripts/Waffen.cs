@@ -2,15 +2,14 @@
 using System.Collections;
 
 public class Waffen : MonoBehaviour
-{
-
-    
+{   
 	public int m_maxMagSize = 20;
 	public int m_maxAmmoCapacity = 80;
 
+    public int m_bulletDamage = 5;
 	public float m_reloadTime = 3f;
 	public float m_fireRate = 0.1f;
-	public float m_bulletSpeed = 5000f;
+	public float m_bulletSpeed = 50f;
     public float m_MuzzleFlashTime;
 
 	public bool m_isAutomatic;
@@ -53,11 +52,14 @@ public class Waffen : MonoBehaviour
 	{
 		if(m_fireRateCounter >= m_fireRate)
 		{
-			GameObject bullet = Instantiate(m_bulletPrefab, m_WeaponPoint.position, m_WeaponPoint.rotation) as GameObject;
-			bullet.rigidbody.AddForce(transform.forward * m_bulletSpeed);
+			Bullet bullet = ((GameObject)Instantiate(m_bulletPrefab, m_WeaponPoint.position, m_WeaponPoint.rotation)).GetComponent<Bullet>();
+            bullet.SetBulletspeed(m_bulletSpeed);
+            bullet.SetDamage(m_bulletDamage);
+            bullet.SetTarget(Bullet.BulletTarget.Enemy);
+
             GameObject muzzleFlash = Instantiate(m_muzzleFlash1, m_WeaponPoint.position, m_WeaponPoint.rotation) as GameObject;
             Destroy(muzzleFlash, m_MuzzleFlashTime);
-			Destroy(bullet, 3);
+			Destroy(bullet.gameObject, 3);
 
 			m_currentMag -= 1;
 

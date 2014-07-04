@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 152.343292, y: 118.40699, z: 162.127411}
+  m_LocalPosition: {x: 161.893707, y: 119.713272, z: 137.046539}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -126,12 +126,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BaseSpeed: 0
-  m_Speed: 0
-  m_Damage: 0
-  m_MaxHP: 0
-  m_HP: 0
+  m_Speed: 5
+  m_MaxHP: 100
+  m_HP: 100
   m_RegHP: 0
   m_Armor: 0
+  m_Damage: 0
   m_IsAlive: 1
   m_HutLevel: 0
   m_StiefelLevel: 0
@@ -144,6 +144,8 @@ MonoBehaviour:
   m_ShotgunPrefab: {fileID: 100002, guid: 54a3147bed83b254f9b04f4790d0ae26, type: 2}
   m_AssaultRiflePrefab: {fileID: 0}
   m_LMGPrefab: {fileID: 0}
+  m_CamOffset: {x: 0, y: 15, z: -10}
+  m_CamSpeed: 10
 --- !u!143 &14300000
 CharacterController:
   m_ObjectHideFlags: 1

@@ -29,6 +29,7 @@ abstract public class Enemyclass : CharacterMechanics
         
     }
 
+
     virtual protected void ProcessMove()
     {
 
@@ -38,7 +39,9 @@ abstract public class Enemyclass : CharacterMechanics
         {
             m_NavMeshAgent.speed = 10f;
             isTargetCow = true;
-            transform.forward = m_Cow.transform.position - transform.position;// Auslagern in Externe Funktion (mit Parameter übergeben
+            Vector3 aimDirection = m_Cow.transform.position - transform.position;
+            aimDirection.Set(aimDirection.x, 0f, aimDirection.z);
+            transform.forward = aimDirection;// Auslagern in Externe Funktion (mit Parameter übergeben
             m_NavMeshAgent.SetDestination(m_Cow.transform.position); // Auslagern in Externe Funktion (mit Parameter übergeben
             ProcessAttack();
             
@@ -47,7 +50,9 @@ abstract public class Enemyclass : CharacterMechanics
         else if(distencePlayer > m_minRange && !isTargetCow)
         {
             m_NavMeshAgent.speed = 10f;
-            transform.forward = m_Target.transform.position - transform.position; // Auslagern in Externe Funktion (mit Parameter übergeben
+            Vector3 aimDirection = m_Target.transform.position - transform.position;
+            aimDirection.Set(aimDirection.x, 0f, aimDirection.z);
+            transform.forward = aimDirection;
             m_NavMeshAgent.SetDestination(m_Target.transform.position);// Auslagern in Externe Funktion (mit Parameter übergeben
             ProcessAttack();
         }
@@ -55,7 +60,9 @@ abstract public class Enemyclass : CharacterMechanics
         {
             if (!isTargetCow)
             {
-                transform.forward = m_Target.transform.position - transform.position; // Auslagern in Externe Funktion (mit Parameter übergeben
+                Vector3 aimDirection = m_Target.transform.position - transform.position;
+                aimDirection.Set(aimDirection.x, 0f, aimDirection.z);
+                transform.forward = aimDirection;
             }
            // m_NavMeshAgent.Stop();
             ProcessAttack();

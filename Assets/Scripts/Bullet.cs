@@ -3,62 +3,62 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
-    public bool m_PlayerBullet = true;
+    public enum BulletTarget
+    {
+        Player,
+        Enemy
+    }
 
-    private int m_damageEnemy = 5;
-    private int m_damagePlayer = 15;
-
-    private Vector3 m_Origin;
+    private BulletTarget m_bulletTarget;
+    private int m_damage;
+    private float m_bulletSpeed = 20.0f;
+    private Vector3 m_lastPos;
 
     // Use this for initialization
     void Start()
     {
-        m_Origin = transform.position;
+        m_lastPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckForPlayer();
-    }
+        transform.position += transform.forward * m_bulletSpeed * Time.deltaTime;
 
-    void CheckForPlayer()
-    {
-        Vector3 dir = (m_Origin - transform.position).normalized;
-        float distance = Vector3.Distance(m_Origin, transform.position);
+        Vector3 rayDir = -transform.forward;
+        float distance = Vector3.Distance(m_lastPos, transform.position);
 
         RaycastHit hit;
-        Ray ray = new Ray(transform.position, dir);
+        Ray ray = new Ray(transform.position, rayDir);
 
-        if (m_PlayerBullet)
+        if(Physics.Raycast(ray, out hit, distance))
         {
-            if (Physics.Raycast(ray, out hit) && hit.transform.gameObject.tag == "Enemy")
+            if(hit.transform.tag != "Player" && hit.transform.tag != "Enemy")
+            { Destroy(gameObject); }
+            else if(m_bulletTarget == BulletTarget.Player && hit.transform.tag == "Player"
+            || m_bulletTarget == BulletTarget.Enemy && hit.transform.tag == "Enemy")
             {
-                Debug.Log("Enemy bekommt schaden");
-                RangeEnemy enemy = hit.transform.gameObject.GetComponent<RangeEnemy>();
-                enemy.TakeDamage(m_damagePlayer);
+                Debug.Log(hit.transform.tag + " bekommt schaden");
+                CharacterMechanics target = hit.transform.GetComponent<CharacterMechanics>();
+                target.TakeDamage(m_damage);                
                 Destroy(gameObject);
-            }
+            }            
         }
-        else
-        {
-            if (Physics.Raycast(ray, out hit) && hit.transform.gameObject.tag == "Player")
-            {
-                Debug.Log("ICh bekommt schaden");
-                CharacterMotor CharMotor = hit.transform.gameObject.GetComponent<CharacterMotor>();
-                CharMotor.TakeDamage(m_damageEnemy);
-                Destroy(gameObject);
-            }
-        }
+        m_lastPos = transform.position;
     }
 
-    public void SetDamageEnemy(int _damage)
+    public void SetDamage(int _damage)
     {
-        m_damageEnemy = _damage;
+        m_damage = _damage;
     }
-    public void SetDamagePlayer(int _damage)
+
+    public void SetTarget(BulletTarget bulletTarget)
     {
-        m_damagePlayer = _damage;
+        m_bulletTarget = bulletTarget;
     }
-        
+
+    public void SetBulletspeed(float bulletSpeed)
+    {
+        m_bulletSpeed = bulletSpeed;
+    }
 }

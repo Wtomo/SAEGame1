@@ -5,7 +5,7 @@ public class RangeEnemy : Enemyclass
 {
     public GameObject m_BulletPrefab;
     public Transform m_CannonPoint;
-    public float m_BulletSpeed = 5000f;
+    public float m_BulletSpeed = 50f;
 
     protected override void Awake()
     {
@@ -28,21 +28,16 @@ public class RangeEnemy : Enemyclass
     {
         //float Target      
         if (m_AttackSpeed >= 0)
-        {
-            
+        {            
             m_AttackSpeed -= Time.deltaTime;            
         }
         else if (m_AttackSpeed <= 0)
         {
-            GameObject bullet = Instantiate(m_BulletPrefab, m_CannonPoint.position, transform.rotation) as GameObject;
-            Bullet damage = bullet.GetComponent<Bullet>();
-            damage.SetDamageEnemy(m_Damage);
-            bullet.rigidbody.AddForce(transform.forward * m_BulletSpeed);
-            m_AttackSpeed = m_maxTimer;
-            
-        }
-        
+            Bullet bullet = ((GameObject)Instantiate(m_BulletPrefab, m_CannonPoint.position, transform.rotation)).GetComponent<Bullet>();
+            bullet.SetDamage(m_Damage);
+            bullet.SetBulletspeed(m_BulletSpeed);
+            bullet.SetTarget(Bullet.BulletTarget.Player);
+            m_AttackSpeed = m_maxTimer;            
+        }        
     }
-    
-
 }

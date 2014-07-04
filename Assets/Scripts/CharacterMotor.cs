@@ -20,6 +20,9 @@ public class CharacterMotor : CharacterMechanics {
     public GameObject m_AssaultRiflePrefab;
     public GameObject m_LMGPrefab;
 
+    public Vector3 m_CamOffset;
+    public float m_CamSpeed;
+
     public enum WeaponType
     {
         None,
@@ -58,6 +61,7 @@ public class CharacterMotor : CharacterMechanics {
         };
         m_SelectedWeapon = WeaponType.None;
         giveWeapon(WeaponType.DesertEagle);
+        m_CharacterCamera.transform.forward = -m_CamOffset;
 	}
 	
 	// Update is called once per frame
@@ -92,13 +96,9 @@ public class CharacterMotor : CharacterMechanics {
         mousePosition.x = (mousePosition.x - Screen.width * 0.5f) / Screen.width * 15.0f;
         mousePosition.z = (mousePosition.y - Screen.height * 0.5f) / Screen.height * 15.0f;
         mousePosition.y = 0;
-        Vector3 camPos = transform.position + (Vector3.up - Vector3.forward) * 10.0f + mousePosition;           
-
-        m_CharacterCamera.transform.position = Vector3.Lerp(m_CharacterCamera.transform.position, camPos, Mathf.Clamp(Time.deltaTime * 4.0f, 0f, 1f));
-
-        //Calculate the camera forward direction
-        Vector3 lookDirection = (transform.position + mousePosition - m_CharacterCamera.transform.position).normalized;
-        m_CharacterCamera.transform.forward = Vector3.Lerp(m_CharacterCamera.transform.forward, lookDirection, Mathf.Clamp(Time.deltaTime * 4.0f, 0f, 1f));
+        Vector3 camPos = transform.position + m_CamOffset + mousePosition;           
+                
+        m_CharacterCamera.transform.position = Vector3.Lerp(m_CharacterCamera.transform.position, camPos, Mathf.Clamp(Time.deltaTime * m_CamSpeed, 0f, 1f));        
 
         //Rotate the Character towards the cursor position
         m_CurrentAimResult = Utilities.CursorRayCast(m_CharacterCamera);
