@@ -9,13 +9,13 @@ public class Waffen : MonoBehaviour
 	public float m_reloadTime = 3f;
 	public float m_fireRate = 0.1f;
 	public float m_bulletSpeed = 50f;
-    public float m_MuzzleFlashTime;
+    //public float m_MuzzleFlashTime;
 
 	public bool m_isAutomatic;
     public Transform m_WeaponPoint;
 
 	public GameObject m_bulletPrefab;
-    public GameObject m_muzzleFlash1;
+    //public GameObject m_muzzleFlash1;
 
 	protected int m_currentMag;
 	protected int m_currentAmmo;
@@ -56,8 +56,8 @@ public class Waffen : MonoBehaviour
             bullet.SetDamage(m_bulletDamage);
             bullet.SetTarget(Bullet.BulletTarget.Enemy);
 
-            GameObject muzzleFlash = Instantiate(m_muzzleFlash1, m_WeaponPoint.position, m_WeaponPoint.rotation) as GameObject;
-            Destroy(muzzleFlash, m_MuzzleFlashTime);
+            //GameObject muzzleFlash = Instantiate(m_muzzleFlash1, m_WeaponPoint.position, m_WeaponPoint.rotation) as GameObject;
+            //Destroy(muzzleFlash, m_MuzzleFlashTime);
 			Destroy(bullet.gameObject, 3);
 
 			m_currentMag -= 1;

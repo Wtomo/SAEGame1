@@ -23,6 +23,8 @@ public class CharacterMotor : CharacterMechanics {
     public Vector3 m_CamOffset;
     public float m_CamSpeed;
 
+    private Animator m_animator;
+
     public enum WeaponType
     {
         None,
@@ -63,10 +65,13 @@ public class CharacterMotor : CharacterMechanics {
         giveWeapon(WeaponType.DesertEagle);
         m_CharacterCamera.transform.forward = -m_CamOffset;
         Screen.showCursor = false;
+        m_animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	protected override void Update () {
+        m_animator.SetBool("Death", !m_IsAlive);
+        if (!m_IsAlive) { return; }
         base.Update();
         //Handle weapon inputs if a weapon is assigned
         if (m_Weapon != null)
@@ -85,8 +90,10 @@ public class CharacterMotor : CharacterMechanics {
             }
         }
         //Get the movement direction
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
-
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        
+        m_animator.SetFloat("Speed", Vector3.Dot(movement, transform.forward));
+        movement.Normalize();
         //Add the gravity to the movement
         movement.y = -m_Gravity;
 

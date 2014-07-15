@@ -28,7 +28,7 @@ public class E_spawner : MonoBehaviour {
     {
         //
         List<Enemy_base> spawn = new List<Enemy_base>();
-        spawn[0]._cost = 20;
+        //spawn[0]._cost = 20;
         //
 	}
 	

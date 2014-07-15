@@ -112,16 +112,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_maxMagSize: 20
-  m_maxAmmoCapacity: 80
   m_bulletDamage: 10
   m_reloadTime: 3
   m_fireRate: 0
   m_bulletSpeed: 50
-  m_MuzzleFlashTime: 0
+  m_MuzzleFlashTime: 500
   m_isAutomatic: 0
   m_WeaponPoint: {fileID: 400002}
   m_bulletPrefab: {fileID: 100000, guid: cc34eb403ce3a58459cef662619f4b68, type: 2}
-  m_muzzleFlash1: {fileID: 100000, guid: 638ce8274ec035a458008dd24e8f6f50, type: 2}
+  m_muzzleFlash1: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

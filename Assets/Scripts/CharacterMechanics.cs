@@ -106,7 +106,10 @@ public class CharacterMechanics : MonoBehaviour
             m_HP = 0f;
             m_IsAlive = false;
             E_spawner._EnemyCounter--;
-            Destroy(gameObject);
+            if (gameObject.tag != "Player")
+            {
+                Destroy(gameObject);
+            }
         }
         return;
     }
