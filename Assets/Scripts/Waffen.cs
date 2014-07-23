@@ -9,6 +9,8 @@ public class Waffen : MonoBehaviour
 	public float m_reloadTime = 3f;
 	public float m_fireRate = 0.1f;
 	public float m_bulletSpeed = 50f;
+
+    private Gui m_gui;
     //public float m_MuzzleFlashTime;
 
 	public bool m_isAutomatic;
@@ -16,8 +18,20 @@ public class Waffen : MonoBehaviour
 
 	public GameObject m_bulletPrefab;
     //public GameObject m_muzzleFlash1;
+    private int m_currentMag;
+    protected int currentMag 
+    {
+        get 
+        {
+            return m_currentMag;
 
-	protected int m_currentMag;
+        }
+        set
+        {
+            m_currentMag = value;
+            m_gui.m_References.m_HorstAmmo.text = m_currentMag.ToString() + "/" + m_currentAmmo.ToString();
+        }
+    }
 	protected int m_currentAmmo;
 
 	protected float m_fireRateCounter = 0f;
@@ -29,8 +43,11 @@ public class Waffen : MonoBehaviour
 	// Use this for initialization
 	protected void Start()
 	{
-		m_currentMag = m_maxMagSize;
+        m_gui = FindObjectOfType<Gui>();
+
+		currentMag = m_maxMagSize;
 		m_currentAmmo = m_maxMagSize;
+        
 	}
 	
 	// Update is called once per frame
@@ -60,7 +77,7 @@ public class Waffen : MonoBehaviour
             //Destroy(muzzleFlash, m_MuzzleFlashTime);
 			Destroy(bullet.gameObject, 3);
 
-			m_currentMag -= 1;
+			currentMag -= 1;
 
 			if(!m_isAutomatic)
 			{
@@ -74,7 +91,7 @@ public class Waffen : MonoBehaviour
 			m_fireRateCounter += Time.deltaTime;
 		}
 
-		if(m_currentMag <= 0)
+		if(currentMag <= 0)
 		{
 			m_reload = true;
 		}
@@ -92,7 +109,7 @@ public class Waffen : MonoBehaviour
 		else
 		{
 			m_reloadTimeCounter = 0f;
-            m_currentMag = m_maxMagSize;
+            currentMag = m_maxMagSize;
 
 			m_reload = false;
 		}
@@ -115,15 +132,15 @@ public class Waffen : MonoBehaviour
 		m_reload = true;
 	}
 
-	protected void OnGUI()
+/*	protected void OnGUI()
 	{
-		Rect pos = new Rect (0, 0, 50, 50);
-		GUI.Button (pos, m_currentMag + "/" + m_currentAmmo);
+		//Rect pos = new Rect (0, 0, 50, 50);
+		//GUI.Button (pos, currentMag + "/" + m_currentAmmo);
 
 		if(m_reload)
 		{
 			pos = new Rect (0, 50, 100, 50);
 			GUI.Button (pos, "reloading");
 		}
-	}
+	}*/
 }

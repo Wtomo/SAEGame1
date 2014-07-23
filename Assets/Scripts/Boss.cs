@@ -20,25 +20,25 @@ public class Boss : Enemyclass
 	
 	protected override void ProcessAttack()
 	{
-		m_HP = 100;
+		HP = 100;
 
-		if(m_HP > 80)
+		if(HP > 80)
 		{
 			ShootPattern(500f, 0.2f, 1.5f, Color.green);
 		}
-		else if(m_HP > 60)
+		else if(HP > 60)
 		{
 			ShootPattern(760f, 0.08f, 0.8f, Color.blue);
 		}
-		else if(m_HP > 30)
+		else if(HP > 30)
 		{
 			ShootPattern(200f, 0.04f, 0.7f, Color.yellow);
 		}
-		else if(m_HP > 0)
+		else if(HP > 0)
 		{
 			ShootPattern(850f, 0.01f, 0.9f, Color.red);
 		}
-		else if(m_HP <= 0)
+		else if(HP <= 0)
 		{
 			return;
 		}

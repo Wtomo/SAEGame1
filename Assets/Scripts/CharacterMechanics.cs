@@ -6,7 +6,28 @@ public class CharacterMechanics : MonoBehaviour
     public float m_BaseSpeed;
     public float m_Speed;
     public float m_MaxHP; //Maximale HP der Einheit
-    public float m_HP; //Aktuelle HP der Einheit
+
+    protected UITexture m_uiTexture = null;
+    protected float m_uiTextureWidth;
+
+    public float HP 
+    {
+        get 
+        {
+            return m_hp;
+        }
+        set
+        {
+            m_hp = value;
+            
+            if (m_uiTexture != null)
+            {
+                m_uiTexture.width = (int) (m_hp / m_MaxHP * m_uiTextureWidth);
+            }
+        }
+    } //Aktuelle HP der Einheit
+    protected float m_hp;
+
     public float m_RegHP; //HP5, s.h.: Menge an HP die alle 5 Sekunden generiert wird
     public float m_Armor; //Rüstung die die Einheit besitzt, wird direkt von dem eingehenden Schaden abgezogen (Keine Rüstungsdurchdringung)
     public int m_Damage;
@@ -99,13 +120,13 @@ public class CharacterMechanics : MonoBehaviour
     public void TakeDamage(int damage)
     {
         float trueDamage = damage - m_Armor; //Armor wird direkt vom Schaden abgezogen, true Damage ist der Wert der im Endeffekt von den HP abgezogen wird
-        m_HP -= trueDamage;
-        if (m_HP <= 0f) //Abfrage ob HP auf 0 gesunken sind
+        HP -= trueDamage;
+        if (HP <= 0f) //Abfrage ob HP auf 0 gesunken sind
         {
-            Debug.Log(m_HP);
-            m_HP = 0f;
+            Debug.Log(HP);
+            HP = 0f;
             m_IsAlive = false;
-            E_spawner._EnemyCounter--;
+            FindObjectOfType<E_spawner>()._EnemyCounter--;
             if (gameObject.tag != "Player")
             {
                 Destroy(gameObject);
@@ -118,7 +139,7 @@ public class CharacterMechanics : MonoBehaviour
     protected virtual void Start()
     {
         //Setzt die aktuellen HP auf die Maximal-HP der Einheit hoch, wird nur beim Start aufgerufen
-        m_HP = m_MaxHP;
+        HP = m_MaxHP;
     }
 
     // Update is called once per frame
@@ -128,7 +149,7 @@ public class CharacterMechanics : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= 5)
         {
-            m_HP += m_RegHP;
+            HP += m_RegHP;
             timer = 0f;
             return;
         }

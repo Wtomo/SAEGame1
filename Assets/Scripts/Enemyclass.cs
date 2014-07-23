@@ -1,75 +1,69 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 abstract public class Enemyclass : CharacterMechanics
 {
-    //public GameObject m_Cow;
-    public GameObject m_Target;
-    public float m_minRange;
+    protected GameObject m_target;
+    public float m_minRange = 0.0f;
     public float m_AttackSpeed = 2;
-    public string CowTag = "Cow";
-    public string PlayerTag = "Player";
 
     protected NavMeshAgent m_NavMeshAgent;
     protected float m_maxTimer = 2f;
 
-    private bool isTargetCow = false;
-    private float m_MaxRangeCow = 20f;
-    
+    protected float m_targetFindTimer = 1f;
 
+    protected List<GameObject> m_validTargets;
+    protected virtual GameObject GetNearestTarget()
+    {
+        IEnumerable<GameObject> currentValidTargets = m_validTargets.Where(target => target != null && (target.GetType() != typeof(Cow) 
+                                                                        || Vector3.Distance(target.transform.position, transform.position) < 20.0f))
+                                                                  .OrderBy(target => Vector3.Distance(target.transform.position, transform.position));
+        return currentValidTargets.First();
+    }
 
     protected virtual void Awake()
     {
+        m_validTargets = new List<GameObject>(from cow in FindObjectsOfType<Cow>() select cow.gameObject);        
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
-        m_Target = FindObjectOfType<CharacterMotor>().gameObject;
+        m_validTargets.Add(FindObjectOfType<CharacterMotor>().gameObject);
+        m_target = GetNearestTarget();
+        m_NavMeshAgent.speed = 10.0f;
     }
+
+    protected float counter = 0.0f;
     protected override void Update()
     {
         base.Update();
+        counter += Time.deltaTime;
+        if(counter >= m_targetFindTimer)
+        {
+            counter -= m_targetFindTimer;
+            m_target = GetNearestTarget();
+        }
         ProcessMove();
-        
+        ProcessAttack();
     }
 
 
     virtual protected void ProcessMove()
-    {
-
-        float distencePlayer = Vector3.Distance(m_Target.transform.position, transform.position);
-        //float distenceCow = Vector3.Distance(m_Cow.transform.position, transform.position);
-        /*if (distenceCow < m_MaxRangeCow && distenceCow > m_minRange)
-        {
-            m_NavMeshAgent.speed = 10f;
-            isTargetCow = true;
-            Vector3 aimDirection = m_Cow.transform.position - transform.position;
-            aimDirection.Set(aimDirection.x, 0f, aimDirection.z);
-            transform.forward = aimDirection;// Auslagern in Externe Funktion (mit Parameter übergeben
-            m_NavMeshAgent.SetDestination(m_Cow.transform.position); // Auslagern in Externe Funktion (mit Parameter übergeben
-            ProcessAttack();
-            
-
-        }
-        else*/ if(distencePlayer > m_minRange && !isTargetCow)
-        {
-            m_NavMeshAgent.speed = 10f;
-            Vector3 aimDirection = m_Target.transform.position - transform.position;
+    {        
+        if(m_target != null)
+        {            
+            Vector3 aimDirection = m_target.transform.position - transform.position;
             aimDirection.Set(aimDirection.x, 0f, aimDirection.z);
             transform.forward = aimDirection;
-            m_NavMeshAgent.SetDestination(m_Target.transform.position);// Auslagern in Externe Funktion (mit Parameter übergeben
-            ProcessAttack();
-        }
-        else
-        {
-            if (!isTargetCow)
-            {
-                Vector3 aimDirection = m_Target.transform.position - transform.position;
-                aimDirection.Set(aimDirection.x, 0f, aimDirection.z);
-                transform.forward = aimDirection;
-            }
-           // m_NavMeshAgent.Stop();
-            ProcessAttack();
-            m_NavMeshAgent.speed = 0;
-        }
 
+            if(Vector3.Distance(transform.position, m_target.transform.position) > m_minRange)
+            {
+                m_NavMeshAgent.SetDestination(m_target.transform.position);// Auslagern in Externe Funktion (mit Parameter übergeben       
+            }
+            //else if(m_NavMeshAgent.)
+            //{
+
+            //}
+        }
     }
     abstract protected void ProcessAttack();
 

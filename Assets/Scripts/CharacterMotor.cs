@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class CharacterMotor : CharacterMechanics {
 
+    private GameManager m_gameManager;
+    private Gui m_gui;
     private CharacterController m_characterController;
     public float m_Gravity = 9.81f;
 
@@ -49,11 +51,19 @@ public class CharacterMotor : CharacterMechanics {
             m_Weapon.transform.parent = m_HandPosition;
             Debug.Log(m_Weapon);
         }
+
+        m_gui.ChangeIcon(); // -----
     }
 
 	// Use this for initialization
 	protected override void Start () {
         base.Start();
+        m_gameManager = FindObjectOfType<GameManager>();
+        m_gui = FindObjectOfType<Gui>();
+        m_uiTexture = m_gui.m_References.m_HorstHP;             // Jerry!!! <--------------
+        m_uiTextureWidth = m_uiTexture.width;                   // Das muss bei jedem Element zugewiesen werden das Lebensbalkenänderungen im GUI hat
+
+
         m_characterController = GetComponent<CharacterController>();
         m_availableWeapons = new Dictionary<WeaponType, GameObject>() { 
             {WeaponType.DesertEagle, m_DesertEaglePrefab},
@@ -70,8 +80,17 @@ public class CharacterMotor : CharacterMechanics {
 	
 	// Update is called once per frame
 	protected override void Update () {
+        if (m_gameManager.GameStates != EGameState.INGAME)
+        {
+            m_CurrentAimResult = Utilities.CursorRayCast(m_CharacterCamera);
+            return;
+        }
         m_animator.SetBool("Death", !m_IsAlive);
-        if (!m_IsAlive) { return; }
+        if (!m_IsAlive) 
+        {
+            m_gameManager.GameStates = EGameState.ENDSCREEN;
+            return; 
+        }
         base.Update();
         //Handle weapon inputs if a weapon is assigned
         if (m_Weapon != null)

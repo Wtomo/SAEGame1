@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 
 public class E_spawner : MonoBehaviour {
-    public static int _EnemyCounter=0;
+    public  int _EnemyCounter=0; // static weg, Find Object of Type in CharacterMechanics
     public List<Enemy_base> enemyclasses;
     public Transform[] _spawnpoints;
     public GameObject _boss;
     public Transform _bosspawnpoint;
+    private Gui m_gui;
     //public GameObject[] _enemyClassA;
    // public GameObject[] _enemyClassB;
    // public GameObject[] _enemyClassC;
@@ -17,8 +18,25 @@ public class E_spawner : MonoBehaviour {
   //  private int _costA = 1;
    // private int _costB = 3;
   //  private int _costC = 5;
+
     private int _waveCounter = 1;
+    public int WaveCounter
+    {
+        get
+        {
+            return _waveCounter;
+        }
+        set
+        {
+            _waveCounter = value;
+            m_gui.m_References.m_CurrentWave.text ="Wave Counter: " +  _waveCounter.ToString();
+
+        }
+    }
+
+
     public int _wavesperboss = 5;
+    public bool m_BossSpawned = false;
     //private int rnd;
     //private int rndEnemy;
     //private int rndPosition;
@@ -26,6 +44,7 @@ public class E_spawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+        m_gui = FindObjectOfType<Gui>();
         //
         List<Enemy_base> spawn = new List<Enemy_base>();
         //spawn[0]._cost = 20;
@@ -70,16 +89,16 @@ public class E_spawner : MonoBehaviour {
             else
             {
                 _nextWave = false;
-                _wavePoints = 10 + (_waveCounter * 5);
-                if (_waveCounter % _wavesperboss ==0)
+                _wavePoints = 10 + (WaveCounter * 5);
+                if (WaveCounter % _wavesperboss ==0)
                 {
                     SpawnBoss();
                 }
-                _waveCounter++;
+                WaveCounter++;
                 Debug.Log("Enemy Count: " + _EnemyCounter);
                 Debug.Log("Computer Points: " + _wavePoints);
                 Debug.Log("Status: " + _nextWave);
-                Debug.Log("Wave " + _waveCounter + " End!!");
+                Debug.Log("Wave " + WaveCounter + " End!!");
             }
 
            /* if (_wavePoints>=_costC)
@@ -161,6 +180,7 @@ public class E_spawner : MonoBehaviour {
     private void SpawnBoss()
     {
        Instantiate(_boss,_bosspawnpoint.position,Quaternion.identity);
+       m_BossSpawned = true;
     }
     void Timer()
     {

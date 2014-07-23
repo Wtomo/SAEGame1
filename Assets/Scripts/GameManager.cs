@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
 
     private void DeactivateEndScreen()
     {
-       // m_gui.EndScreen.SetActive(false);
+        m_gui.EndScreen.SetActive(false);
     }
 
     #endregion
@@ -124,19 +124,19 @@ public class GameManager : MonoBehaviour
     private void ActivateIngame()
     {
         m_gui.IngameUI.SetActive(true);
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
     }
 
     private void ActivatePause()
     {
         m_gui.PauseMenu.SetActive(true);
-        //Time.timeScale = 0f;
+        Time.timeScale = 0f;
     }
 
     private void ActivateItemShop()
     {
         m_gui.ItemShop.SetActive(true);
-        //Time.timeScale = 0f;
+        Time.timeScale = 0f;
     }
 
     private void ActivateOptions()

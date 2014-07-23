@@ -3,11 +3,16 @@ using System.Collections;
 
 public class Gui : MonoBehaviour
 {
+    public UIReferences m_References;
+
+    private E_spawner m_eSpawner;
+
     public GameObject StartMenu;
     public GameObject IngameUI;
     public GameObject PauseMenu;
     public GameObject ItemShop;
     public GameObject EndScreen;
+    public GameObject EnemyBox;
 
     public UITexture EnemyHPBar;
 
@@ -37,6 +42,16 @@ public class Gui : MonoBehaviour
     void Awake()
     {
         m_gameManager = FindObjectOfType<GameManager>();
+       // m_eSpawner = FindObjectOfType<E_spawner>();
+
+
+        DontDestroyOnLoad(StartMenu);
+        DontDestroyOnLoad(IngameUI);
+        DontDestroyOnLoad(PauseMenu);
+        DontDestroyOnLoad(ItemShop);
+        DontDestroyOnLoad(EndScreen);
+        DontDestroyOnLoad(gameObject);
+
     }
 
     void Start()
@@ -47,16 +62,34 @@ public class Gui : MonoBehaviour
 
     void Update()
     {
-        HPLoss();
-        EnemyHPLoss();
+       // Debug.Log(m_gameManager.GameStates);
         CurrentPoints();
         Pause();
     }
 
     public void StartGame()
     {
-        //Application.LoadLevelAdditive(1);
+        Application.LoadLevel(1);
         m_gameManager.GameStates = EGameState.INGAME;
+        //IngameUI.SetActive(true);
+        //StartMenu.SetActive(false);
+      //  GameManager.m_Instance.GameStates = EGameState.INGAME;
+
+    }
+
+    public void RestartMenu()
+    {
+        m_gameManager.GameStates = EGameState.STARTMENU;
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+
+        for (int i = 0; i < allObjects.Length; i++ )
+        {
+            Destroy(allObjects[i]);
+        }
+
+        Screen.showCursor = true;
+        Application.LoadLevel(0);
+       // EndScreen.SetActive(false);
     }
 
     public void Pause()
@@ -85,7 +118,6 @@ public class Gui : MonoBehaviour
     {
         isPaused = !isPaused;
         m_gameManager.GameStates = EGameState.INGAME;
-
         //Time.timeScale = isPaused ? 0 : 1;
         // IngameUI.SetActive(true);
         // PauseMenu.SetActive(false);
@@ -103,24 +135,24 @@ public class Gui : MonoBehaviour
         Application.Quit();
     }
 
-    public void EnemyHPLoss()
+    public void EnemyHealth()
     {
-        EnemyHPBar.width = (int)(550 * m_enemyCurrentHP / m_enemyMaxHP);
+        if (m_eSpawner.m_BossSpawned && !EnemyBox.activeSelf)
+        {
+            EnemyBox.SetActive(true);
+        }
+        
     }
-    public void HPLoss()
+
+    public void Endscreen()
     {
-        HPBar.width = (int)(135 * m_currentHP / m_maxHP);
+        m_gameManager.GameStates = EGameState.ENDSCREEN;
     }
 
     public void CurrentPoints()
     {
         Points.text = m_currentPoints.ToString();
         BuyPoints.text = m_currentBuyPoint.ToString();
-    }
-
-    public void HPDamage()
-    {
-        m_enemyCurrentHP = m_enemyCurrentHP - 1;
     }
 
     public void ChangeIcon()
@@ -130,7 +162,15 @@ public class Gui : MonoBehaviour
         WeaponNameIcon.text = weaponNames[selectedWeaponIcon];
         Ammo.text = m_currentAmmo.ToString() + "/" + m_maxAmmo.ToString();        
     }
+
 }
 
-
+[System.Serializable]
+public class UIReferences
+{
+    public UITexture m_HorstHP;
+    public UISprite m_HorstWeapon;
+    public UILabel m_HorstAmmo;
+    public UILabel m_CurrentWave;
+}
 

@@ -14,7 +14,23 @@ public class RangeEnemy : Enemyclass
 
     protected override void ProcessMove()
     {
-        base.ProcessMove();
+        if (m_target == null)
+        {
+            return;
+        }
+
+        Vector3 aimDirection = m_target.transform.position - transform.position;
+        aimDirection.Set(aimDirection.x, 0f, aimDirection.z);
+        transform.forward = aimDirection;
+        if (m_target != null && Vector3.Distance(transform.position, m_target.transform.position) > 20.0f)
+        {
+            m_NavMeshAgent.speed = 10f;            
+            m_NavMeshAgent.SetDestination(m_target.transform.position);// Auslagern in Externe Funktion (mit Parameter übergeben            
+        }
+        else
+        {
+            m_NavMeshAgent.Stop();
+        }
     }
 
     protected override void ProcessAttack()

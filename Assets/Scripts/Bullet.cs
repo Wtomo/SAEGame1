@@ -33,13 +33,13 @@ public class Bullet : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit, distance))
         {
-            if(hit.transform.tag != "Player" && hit.transform.tag != "Enemy")
+            if(hit.transform.tag != "Player" && hit.transform.tag != "Enemy" && hit.transform.tag != "Cow")
             { Destroy(gameObject); }
-            else if(m_bulletTarget == BulletTarget.Player && hit.transform.tag == "Player"
+            else if(m_bulletTarget == BulletTarget.Player && (hit.transform.tag == "Player" || hit.transform.tag == "Cow")
             || m_bulletTarget == BulletTarget.Enemy && hit.transform.tag == "Enemy")
             {                
                 CharacterMechanics target = hit.transform.GetComponent<CharacterMechanics>();
-                Debug.Log(hit.transform.tag + " bekommt schaden (noch " + target.m_HP + " HP)");
+                Debug.Log(hit.transform.tag + " bekommt schaden (noch " + target.HP + " HP)");
                 target.TakeDamage(m_damage);                
                 Destroy(gameObject);
             }            

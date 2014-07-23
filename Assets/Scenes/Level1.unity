@@ -409,7 +409,7 @@ Transform:
   - {fileID: 1079397729}
   - {fileID: 1763271013}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 34
+  m_RootOrder: 37
 --- !u!95 &25504383
 Animator:
   serializedVersion: 3
@@ -2410,7 +2410,7 @@ Transform:
   - {fileID: 201169339}
   - {fileID: 1711897611}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 8
+  m_RootOrder: 11
 --- !u!95 &100543584
 Animator:
   serializedVersion: 3
@@ -4156,7 +4156,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -4190,6 +4190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d1399a8b9337542a916ce63cbaf385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _EnemyCounter: 0
   enemyclasses:
   - _enemys:
     - {fileID: 100000, guid: d53924485f9af914484d3f4c1c3c2ade, type: 2}
@@ -4197,9 +4198,10 @@ MonoBehaviour:
     _enemyName: A
   _spawnpoints:
   - {fileID: 1763761165}
-  _boss: {fileID: 0}
-  _bosspawnpoint: {fileID: 0}
+  _boss: {fileID: 100002, guid: 7a0fa85e98a77584fbf3e9f9972a586a, type: 2}
+  _bosspawnpoint: {fileID: 945613403}
   _wavesperboss: 5
+  m_BossSpawned: 0
 --- !u!1 &160368823
 GameObject:
   m_ObjectHideFlags: 0
@@ -5408,7 +5410,7 @@ Transform:
   m_Children:
   - {fileID: 2033899256}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 31
+  m_RootOrder: 34
 --- !u!95 &196605761
 Animator:
   serializedVersion: 3
@@ -6075,7 +6077,7 @@ Transform:
   - {fileID: 1450933864}
   - {fileID: 802349247}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 2
+  m_RootOrder: 5
 --- !u!95 &211701148
 Animator:
   serializedVersion: 3
@@ -6551,7 +6553,7 @@ Transform:
   - {fileID: 709021147}
   - {fileID: 654899984}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 33
+  m_RootOrder: 36
 --- !u!136 &225036519
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6924,7 +6926,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 538131868}
-  m_RootOrder: 7
+  m_RootOrder: 3
 --- !u!1 &232421368
 GameObject:
   m_ObjectHideFlags: 0
@@ -10584,7 +10586,7 @@ Transform:
   - {fileID: 1303114467}
   - {fileID: 1681272561}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 32
+  m_RootOrder: 35
 --- !u!95 &321847155
 Animator:
   serializedVersion: 3
@@ -12827,7 +12829,7 @@ Transform:
   - {fileID: 1695912012}
   - {fileID: 1195327455}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 36
+  m_RootOrder: 39
 --- !u!95 &380636969
 Animator:
   serializedVersion: 3
@@ -13382,7 +13384,7 @@ Transform:
   - {fileID: 1439521842}
   - {fileID: 675730369}
   m_Father: {fileID: 538131868}
-  m_RootOrder: 5
+  m_RootOrder: 1
 --- !u!1001 &397733545
 Prefab:
   m_ObjectHideFlags: 0
@@ -14164,7 +14166,7 @@ Transform:
   - {fileID: 2024909158}
   - {fileID: 1619060828}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 23
+  m_RootOrder: 26
 --- !u!95 &424630697
 Animator:
   serializedVersion: 3
@@ -15729,7 +15731,7 @@ Transform:
   m_Children:
   - {fileID: 1295435504}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 26
+  m_RootOrder: 29
 --- !u!95 &469386345
 Animator:
   serializedVersion: 3
@@ -15909,7 +15911,7 @@ Transform:
   m_Children:
   - {fileID: 280741705}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 29
+  m_RootOrder: 32
 --- !u!95 &476539126
 Animator:
   serializedVersion: 3
@@ -16757,7 +16759,7 @@ Transform:
   m_Children:
   - {fileID: 730044002}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 15
+  m_RootOrder: 18
 --- !u!95 &500007418
 Animator:
   serializedVersion: 3
@@ -16816,7 +16818,7 @@ Transform:
   - {fileID: 864484098}
   - {fileID: 1714958881}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 21
+  m_RootOrder: 24
 --- !u!95 &503242284
 Animator:
   serializedVersion: 3
@@ -18292,7 +18294,7 @@ Transform:
   - {fileID: 1830267435}
   - {fileID: 566930085}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 15
 --- !u!23 &535203008
 Renderer:
   m_ObjectHideFlags: 0
@@ -18417,16 +18419,16 @@ Transform:
   m_LocalPosition: {x: 11.5069418, y: 7.33520365, z: -22.7161179}
   m_LocalScale: {x: .0688043237, y: .0688043237, z: .0688043311}
   m_Children:
-  - {fileID: 661385500}
-  - {fileID: 1940468803}
-  - {fileID: 1510973725}
-  - {fileID: 1218679881}
   - {fileID: 738359953}
   - {fileID: 397408931}
   - {fileID: 1586001112}
   - {fileID: 230594678}
   - {fileID: 1420152620}
   - {fileID: 1504386266}
+  - {fileID: 661385500}
+  - {fileID: 1940468803}
+  - {fileID: 1510973725}
+  - {fileID: 1218679881}
   m_Father: {fileID: 272305276}
   m_RootOrder: 1
 --- !u!1 &538830693
@@ -19227,7 +19229,7 @@ Transform:
   - {fileID: 1474720343}
   - {fileID: 1624422384}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 39
+  m_RootOrder: 1
 --- !u!95 &561389433
 Animator:
   serializedVersion: 3
@@ -20648,6 +20650,9 @@ Transform:
   m_LocalPosition: {x: 191.795425, y: 116, z: 161.937958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1747473627}
+  - {fileID: 561389432}
+  - {fileID: 1403331862}
   - {fileID: 1788254464}
   - {fileID: 1672061028}
   - {fileID: 211701147}
@@ -20686,9 +20691,6 @@ Transform:
   - {fileID: 1324264643}
   - {fileID: 380636968}
   - {fileID: 1295028867}
-  - {fileID: 1747473627}
-  - {fileID: 561389432}
-  - {fileID: 1403331862}
   m_Father: {fileID: 0}
   m_RootOrder: 24
 --- !u!1 &603235179
@@ -20965,7 +20967,7 @@ Transform:
   m_Children:
   - {fileID: 741350022}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 28
+  m_RootOrder: 31
 --- !u!95 &613746130
 Animator:
   serializedVersion: 3
@@ -21881,7 +21883,7 @@ Transform:
   - {fileID: 1914038665}
   - {fileID: 1178914372}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 19
 --- !u!23 &640732254
 Renderer:
   m_ObjectHideFlags: 0
@@ -22371,7 +22373,7 @@ Transform:
   - {fileID: 1618888445}
   - {fileID: 1630716924}
   m_Father: {fileID: 538131868}
-  m_RootOrder: 0
+  m_RootOrder: 6
 --- !u!1 &661422947
 GameObject:
   m_ObjectHideFlags: 0
@@ -24387,12 +24389,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BaseSpeed: 0
-  m_Speed: 5
+  m_Speed: 10
   m_MaxHP: 100
-  m_HP: 100
-  m_RegHP: 0
-  m_Armor: 0
-  m_Damage: 0
+  m_RegHP: 2
+  m_Armor: 1
+  m_Damage: 3
   m_IsAlive: 1
   m_HutLevel: 0
   m_StiefelLevel: 0
@@ -25001,7 +25002,7 @@ Transform:
   - {fileID: 1473989674}
   - {fileID: 1078884302}
   m_Father: {fileID: 538131868}
-  m_RootOrder: 4
+  m_RootOrder: 0
 --- !u!1 &741350021
 GameObject:
   m_ObjectHideFlags: 0
@@ -25221,7 +25222,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 4d2946f211011f84e8e047d84034aad8, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d2946f211011f84e8e047d84034aad8, type: 2}
@@ -26829,9 +26830,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 812624905}
   - 65: {fileID: 812624906}
+  - 114: {fileID: 812624907}
   m_Layer: 0
   m_Name: Kuh
-  m_TagString: Untagged
+  m_TagString: Cow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26852,7 +26854,7 @@ Transform:
   - {fileID: 1458726961}
   - {fileID: 554845408}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 23
 --- !u!65 &812624906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26866,6 +26868,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.5, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 1.20000005}
+--- !u!114 &812624907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 4d2946f211011f84e8e047d84034aad8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1666019780}
+  m_GameObject: {fileID: 812624904}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d4391c7cf7ecb40be4aeeda02bba64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BaseSpeed: 0
+  m_Speed: 0
+  m_MaxHP: 100
+  m_RegHP: 0
+  m_Armor: 0
+  m_Damage: 0
+  m_IsAlive: 1
+  m_HutLevel: 0
+  m_StiefelLevel: 0
+  m_WesteLevel: 0
 --- !u!1 &812928856
 GameObject:
   m_ObjectHideFlags: 0
@@ -27846,9 +27870,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 845049206}
   - 65: {fileID: 845049207}
+  - 114: {fileID: 845049208}
   m_Layer: 0
   m_Name: Kuh
-  m_TagString: Untagged
+  m_TagString: Cow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27883,6 +27908,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.5, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 1.20000005}
+--- !u!114 &845049208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 4d2946f211011f84e8e047d84034aad8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1991157162}
+  m_GameObject: {fileID: 845049205}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d4391c7cf7ecb40be4aeeda02bba64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BaseSpeed: 0
+  m_Speed: 0
+  m_MaxHP: 100
+  m_RegHP: 0
+  m_Armor: 0
+  m_Damage: 0
+  m_IsAlive: 1
+  m_HutLevel: 0
+  m_StiefelLevel: 0
+  m_WesteLevel: 0
 --- !u!1 &846193131
 GameObject:
   m_ObjectHideFlags: 0
@@ -27970,7 +28017,7 @@ Transform:
   m_Children:
   - {fileID: 519664176}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 13
+  m_RootOrder: 16
 --- !u!95 &846559021
 Animator:
   serializedVersion: 3
@@ -28366,7 +28413,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 4d2946f211011f84e8e047d84034aad8, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d2946f211011f84e8e047d84034aad8, type: 2}
@@ -29316,7 +29363,7 @@ Transform:
   - {fileID: 219467834}
   - {fileID: 573244361}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 5
+  m_RootOrder: 8
 --- !u!136 &892779295
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -30088,7 +30135,7 @@ Transform:
   - {fileID: 1143632957}
   - {fileID: 1813844635}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 4
+  m_RootOrder: 7
 --- !u!95 &908549340
 Animator:
   serializedVersion: 3
@@ -30768,7 +30815,7 @@ Transform:
   - {fileID: 2041058969}
   - {fileID: 177492506}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 20
+  m_RootOrder: 23
 --- !u!136 &927304319
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -31444,6 +31491,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.5, y: 1, z: 1}
   m_Center: {x: -1.79999995, y: 1, z: 0}
+--- !u!1 &945613402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 945613403}
+  m_Layer: 0
+  m_Name: BossSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &945613403
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 945613402}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 172.966904, y: 119.090912, z: 168.460144}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 35
 --- !u!1 &947521238
 GameObject:
   m_ObjectHideFlags: 0
@@ -31475,7 +31549,7 @@ Transform:
   - {fileID: 2115546960}
   - {fileID: 612137704}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 7
+  m_RootOrder: 10
 --- !u!95 &947521240
 Animator:
   serializedVersion: 3
@@ -32754,7 +32828,7 @@ Transform:
   - {fileID: 1723881668}
   - {fileID: 1879223174}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 24
+  m_RootOrder: 27
 --- !u!136 &1001379990
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -33527,9 +33601,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1042782586}
   - 65: {fileID: 1042782587}
+  - 114: {fileID: 1042782588}
   m_Layer: 0
   m_Name: Kuh
-  m_TagString: Untagged
+  m_TagString: Cow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33550,7 +33625,7 @@ Transform:
   - {fileID: 1689694404}
   - {fileID: 701320069}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 22
 --- !u!65 &1042782587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33564,6 +33639,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.5, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 1.20000005}
+--- !u!114 &1042782588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 4d2946f211011f84e8e047d84034aad8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1081850470}
+  m_GameObject: {fileID: 1042782585}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d4391c7cf7ecb40be4aeeda02bba64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BaseSpeed: 0
+  m_Speed: 0
+  m_MaxHP: 100
+  m_RegHP: 0
+  m_Armor: 0
+  m_Damage: 0
+  m_IsAlive: 1
+  m_HutLevel: 0
+  m_StiefelLevel: 0
+  m_WesteLevel: 0
 --- !u!1 &1045313098
 GameObject:
   m_ObjectHideFlags: 0
@@ -34790,7 +34887,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 4d2946f211011f84e8e047d84034aad8, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d2946f211011f84e8e047d84034aad8, type: 2}
@@ -37208,7 +37305,7 @@ Transform:
   - {fileID: 690868057}
   - {fileID: 646181110}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 22
+  m_RootOrder: 25
 --- !u!95 &1157185164
 Animator:
   serializedVersion: 3
@@ -38967,9 +39064,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1213816583}
   - 65: {fileID: 1213816584}
+  - 114: {fileID: 1213816585}
   m_Layer: 0
   m_Name: Kuh
-  m_TagString: Untagged
+  m_TagString: Cow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39004,6 +39102,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.5, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 1.20000005}
+--- !u!114 &1213816585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 4d2946f211011f84e8e047d84034aad8,
+    type: 2}
+  m_PrefabInternal: {fileID: 2070097809}
+  m_GameObject: {fileID: 1213816582}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d4391c7cf7ecb40be4aeeda02bba64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BaseSpeed: 0
+  m_Speed: 0
+  m_MaxHP: 100
+  m_RegHP: 0
+  m_Armor: 0
+  m_Damage: 0
+  m_IsAlive: 1
+  m_HutLevel: 0
+  m_StiefelLevel: 0
+  m_WesteLevel: 0
 --- !u!1 &1214702698
 GameObject:
   m_ObjectHideFlags: 0
@@ -39093,7 +39213,7 @@ Transform:
   - {fileID: 905971098}
   - {fileID: 1998421052}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 6
+  m_RootOrder: 9
 --- !u!95 &1214718056
 Animator:
   serializedVersion: 3
@@ -39152,7 +39272,7 @@ Transform:
   m_Children:
   - {fileID: 3845179}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 16
+  m_RootOrder: 19
 --- !u!95 &1215363797
 Animator:
   serializedVersion: 3
@@ -39429,7 +39549,7 @@ Transform:
   m_LocalScale: {x: 2.55388308, y: 2.55388355, z: 2.55388331}
   m_Children: []
   m_Father: {fileID: 538131868}
-  m_RootOrder: 3
+  m_RootOrder: 9
 --- !u!1001 &1219502565
 Prefab:
   m_ObjectHideFlags: 0
@@ -40535,7 +40655,7 @@ Transform:
   - {fileID: 445682270}
   - {fileID: 1736751104}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 17
 --- !u!23 &1255404848
 Renderer:
   m_ObjectHideFlags: 0
@@ -41184,7 +41304,7 @@ Transform:
   - {fileID: 1295033386}
   - {fileID: 1166993683}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 3
+  m_RootOrder: 6
 --- !u!95 &1262381420
 Animator:
   serializedVersion: 3
@@ -41974,7 +42094,7 @@ Transform:
   - {fileID: 304789285}
   - {fileID: 1072473269}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 37
+  m_RootOrder: 40
 --- !u!95 &1295028868
 Animator:
   serializedVersion: 3
@@ -43213,7 +43333,7 @@ Transform:
   - {fileID: 883894051}
   - {fileID: 689542778}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 35
+  m_RootOrder: 38
 --- !u!95 &1324264644
 Animator:
   serializedVersion: 3
@@ -43428,6 +43548,26 @@ Prefab:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 11400000, guid: 43f87ce566f77d54caa8624023274b8b, type: 2}
+      propertyPath: m_MaxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 43f87ce566f77d54caa8624023274b8b, type: 2}
+      propertyPath: m_RegHP
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 43f87ce566f77d54caa8624023274b8b, type: 2}
+      propertyPath: m_Armor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 43f87ce566f77d54caa8624023274b8b, type: 2}
+      propertyPath: m_Damage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 43f87ce566f77d54caa8624023274b8b, type: 2}
+      propertyPath: m_Speed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43f87ce566f77d54caa8624023274b8b, type: 2}
   m_RootGameObject: {fileID: 710982023}
@@ -44250,9 +44390,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1357570389}
   - 65: {fileID: 1357570390}
+  - 114: {fileID: 1357570391}
   m_Layer: 0
   m_Name: Kuh
-  m_TagString: Untagged
+  m_TagString: Cow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44273,7 +44414,7 @@ Transform:
   - {fileID: 365112804}
   - {fileID: 1329526553}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 21
 --- !u!65 &1357570390
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44287,6 +44428,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.5, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 1.20000005}
+--- !u!114 &1357570391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 4d2946f211011f84e8e047d84034aad8,
+    type: 2}
+  m_PrefabInternal: {fileID: 858961522}
+  m_GameObject: {fileID: 1357570388}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d4391c7cf7ecb40be4aeeda02bba64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BaseSpeed: 0
+  m_Speed: 0
+  m_MaxHP: 100
+  m_RegHP: 0
+  m_Armor: 0
+  m_Damage: 0
+  m_IsAlive: 1
+  m_HutLevel: 0
+  m_StiefelLevel: 0
+  m_WesteLevel: 0
 --- !u!1 &1359838468
 GameObject:
   m_ObjectHideFlags: 0
@@ -45616,7 +45779,7 @@ Transform:
   - {fileID: 1857892050}
   - {fileID: 814060249}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 40
+  m_RootOrder: 2
 --- !u!95 &1403331863
 Animator:
   serializedVersion: 3
@@ -45742,7 +45905,7 @@ Transform:
   - {fileID: 520278552}
   - {fileID: 145458446}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 25
+  m_RootOrder: 28
 --- !u!95 &1405921864
 Animator:
   serializedVersion: 3
@@ -46231,7 +46394,7 @@ Transform:
   - {fileID: 1391508048}
   - {fileID: 1594673657}
   m_Father: {fileID: 538131868}
-  m_RootOrder: 8
+  m_RootOrder: 4
 --- !u!1001 &1422382658
 Prefab:
   m_ObjectHideFlags: 0
@@ -46407,7 +46570,7 @@ Transform:
   - {fileID: 346305229}
   - {fileID: 599268995}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 27
+  m_RootOrder: 30
 --- !u!136 &1425063894
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -48563,7 +48726,7 @@ Transform:
   m_Children:
   - {fileID: 294124637}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 12
+  m_RootOrder: 15
 --- !u!95 &1482849495
 Animator:
   serializedVersion: 3
@@ -48966,7 +49129,7 @@ Transform:
   - {fileID: 364122821}
   - {fileID: 676787450}
   m_Father: {fileID: 538131868}
-  m_RootOrder: 9
+  m_RootOrder: 5
 --- !u!1001 &1504391428
 Prefab:
   m_ObjectHideFlags: 0
@@ -49119,7 +49282,7 @@ Transform:
   - {fileID: 1257191266}
   - {fileID: 1259362629}
   m_Father: {fileID: 538131868}
-  m_RootOrder: 2
+  m_RootOrder: 8
 --- !u!1 &1511058834
 GameObject:
   m_ObjectHideFlags: 0
@@ -49799,7 +49962,7 @@ Transform:
   - {fileID: 1179466863}
   - {fileID: 76127122}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 9
+  m_RootOrder: 12
 --- !u!95 &1533791492
 Animator:
   serializedVersion: 3
@@ -50220,9 +50383,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1552827507}
   - 65: {fileID: 1552827508}
+  - 114: {fileID: 1552827509}
   m_Layer: 0
   m_Name: Kuh
-  m_TagString: Untagged
+  m_TagString: Cow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50243,7 +50407,7 @@ Transform:
   - {fileID: 824429277}
   - {fileID: 1594767823}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 18
 --- !u!65 &1552827508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50257,6 +50421,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.5, y: 1, z: 2.5}
   m_Center: {x: 0, y: 0, z: 1.20000005}
+--- !u!114 &1552827509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 4d2946f211011f84e8e047d84034aad8,
+    type: 2}
+  m_PrefabInternal: {fileID: 745174896}
+  m_GameObject: {fileID: 1552827506}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d4391c7cf7ecb40be4aeeda02bba64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BaseSpeed: 0
+  m_Speed: 0
+  m_MaxHP: 100
+  m_RegHP: 0
+  m_Armor: 0
+  m_Damage: 0
+  m_IsAlive: 1
+  m_HutLevel: 0
+  m_StiefelLevel: 0
+  m_WesteLevel: 0
 --- !u!1 &1554049588
 GameObject:
   m_ObjectHideFlags: 0
@@ -51400,7 +51586,7 @@ Transform:
   - {fileID: 1256761200}
   - {fileID: 2032879513}
   m_Father: {fileID: 538131868}
-  m_RootOrder: 6
+  m_RootOrder: 2
 --- !u!1 &1594673656
 GameObject:
   m_ObjectHideFlags: 0
@@ -51728,7 +51914,7 @@ Transform:
   - {fileID: 1413676150}
   - {fileID: 1341143427}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 16
 --- !u!1 &1604975758
 GameObject:
   m_ObjectHideFlags: 0
@@ -53107,7 +53293,7 @@ Transform:
   m_Children:
   - {fileID: 1650623254}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 14
+  m_RootOrder: 17
 --- !u!95 &1646120213
 Animator:
   serializedVersion: 3
@@ -53305,7 +53491,7 @@ Transform:
   m_Children:
   - {fileID: 1055938160}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 30
+  m_RootOrder: 33
 --- !u!95 &1652490247
 Animator:
   serializedVersion: 3
@@ -53733,7 +53919,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 4d2946f211011f84e8e047d84034aad8, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d2946f211011f84e8e047d84034aad8, type: 2}
@@ -53833,7 +54019,7 @@ Transform:
   m_Children:
   - {fileID: 1969563955}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 11
+  m_RootOrder: 14
 --- !u!95 &1668790776
 Animator:
   serializedVersion: 3
@@ -53978,7 +54164,7 @@ Transform:
   - {fileID: 1345705797}
   - {fileID: 2099326395}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 1
+  m_RootOrder: 4
 --- !u!95 &1672061029
 Animator:
   serializedVersion: 3
@@ -56433,7 +56619,7 @@ Transform:
   - {fileID: 379023253}
   - {fileID: 1193659275}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 38
+  m_RootOrder: 0
 --- !u!95 &1747473628
 Animator:
   serializedVersion: 3
@@ -57017,7 +57203,7 @@ Transform:
   m_Children:
   - {fileID: 1604975761}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 17
+  m_RootOrder: 20
 --- !u!95 &1770216189
 Animator:
   serializedVersion: 3
@@ -57287,7 +57473,7 @@ Transform:
   - {fileID: 2098100619}
   - {fileID: 1247481933}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 0
+  m_RootOrder: 3
 --- !u!95 &1788254465
 Animator:
   serializedVersion: 3
@@ -62101,7 +62287,7 @@ Transform:
   - {fileID: 779988268}
   - {fileID: 340559747}
   m_Father: {fileID: 538131868}
-  m_RootOrder: 1
+  m_RootOrder: 7
 --- !u!1 &1944583312
 GameObject:
   m_ObjectHideFlags: 0
@@ -65612,7 +65798,7 @@ Transform:
   - {fileID: 313545701}
   - {fileID: 1638949419}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 10
+  m_RootOrder: 13
 --- !u!136 &2067546664
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -66777,7 +66963,7 @@ Transform:
   m_Children:
   - {fileID: 1837506827}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 18
+  m_RootOrder: 21
 --- !u!65 &2103177126
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -67102,7 +67288,7 @@ Transform:
   - {fileID: 391471237}
   - {fileID: 1716952962}
   m_Father: {fileID: 602830702}
-  m_RootOrder: 19
+  m_RootOrder: 22
 --- !u!95 &2109062042
 Animator:
   serializedVersion: 3
@@ -67586,7 +67772,7 @@ Transform:
   - {fileID: 1094716338}
   - {fileID: 2075412678}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 20
 --- !u!1001 &2124849135
 Prefab:
   m_ObjectHideFlags: 0
