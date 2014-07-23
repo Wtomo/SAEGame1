@@ -1,0 +1,134 @@
+fileFormatVersion: 2
+guid: 908e83bd6f089ef47ae76acb4300b411
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Alien
+    100004: Alien_mit_waffe
+    100006: arm_links001
+    100008: arm_rechts001
+    100010: Bein002
+    100012: Bein003
+    100014: Bein_Links004
+    100016: Bein_Links005
+    100018: Cape001
+    100020: fus_links001
+    100022: fuss001
+    100024: Hand001
+    100026: Koerper001
+    100028: Kopf_main001
+    100030: waffe
+    400000: //RootNode
+    400002: Alien
+    400004: Alien_mit_waffe
+    400006: arm_links001
+    400008: arm_rechts001
+    400010: Bein002
+    400012: Bein003
+    400014: Bein_Links004
+    400016: Bein_Links005
+    400018: Cape001
+    400020: fus_links001
+    400022: fuss001
+    400024: Hand001
+    400026: Koerper001
+    400028: Kopf_main001
+    400030: waffe
+    2300000: Alien
+    2300002: arm_links001
+    2300004: arm_rechts001
+    2300006: Bein002
+    2300008: Bein003
+    2300010: Bein_Links004
+    2300012: Bein_Links005
+    2300014: Cape001
+    2300016: fus_links001
+    2300018: fuss001
+    2300020: Hand001
+    2300022: Koerper001
+    2300024: Kopf_main001
+    2300026: waffe
+    3300000: Alien
+    3300002: arm_links001
+    3300004: arm_rechts001
+    3300006: Bein002
+    3300008: Bein003
+    3300010: Bein_Links004
+    3300012: Bein_Links005
+    3300014: Cape001
+    3300016: fus_links001
+    3300018: fuss001
+    3300020: Hand001
+    3300022: Koerper001
+    3300024: Kopf_main001
+    3300026: waffe
+    4300000: Hand001
+    4300002: waffe
+    4300004: Bein002
+    4300006: Koerper001
+    4300008: fuss001
+    4300010: Kopf_main001
+    4300012: Alien
+    4300014: Cape001
+    4300016: arm_rechts001
+    4300018: Bein_Links004
+    4300020: Bein_Links005
+    4300022: Bein003
+    4300024: fus_links001
+    4300026: arm_links001
+    9500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .0500000007
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

@@ -27,6 +27,7 @@ public class Move : MonoBehaviour
     {
         ProcessMovement();
         ProcessRotation();
+        
 	
 	}
 
@@ -72,9 +73,6 @@ public class Move : MonoBehaviour
     {
         float xRot = Input.GetAxis("Mouse X") * Time.deltaTime * m_RotationSpeed;
         transform.Rotate(Vector3.up, xRot);
-
-        float yRot = Input.GetAxis("Mouse Y") * Time.deltaTime * -m_RotationSpeed;
-        Camera.main.transform.Rotate(Vector3.right, yRot);
 
     }
 }

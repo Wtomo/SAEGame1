@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: bfcf68d8b72e69c4399c2e1c1a62544c
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - m_WeaponPoint: {instanceID: 0}
+  - m_bulletPrefab: {fileID: 100000, guid: cc34eb403ce3a58459cef662619f4b68, type: 2}
+  - m_muzzleFlash1: {fileID: 100000, guid: 638ce8274ec035a458008dd24e8f6f50, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
